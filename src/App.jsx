@@ -1,7 +1,9 @@
 
 import { useState } from 'react'
 import screenshotImg from './assets/Screenshot.png'
-import Card from './components/Card'
+import Card from './Components/Card'
+import Header from './Components/Header'
+import Hero from './Components/Hero'
 import './App.css'
 
 function App() {
@@ -23,6 +25,8 @@ function App() {
 
   return (
     <>
+      <Header />
+      <Hero />
       <div >
         <h1>First React Project</h1>
       </div>
@@ -35,6 +39,7 @@ function App() {
             image={screenshotImg}
           />
         ))}
+
 
       </div>
 
