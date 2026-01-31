@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { Dialog, DialogPanel } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import { Button } from '../components/ui/button'
+import { NavigationMenu, NavigationMenuList, NavigationMenuItem, NavigationMenuLink } from '../components/ui/navigation-menu'
 
 const navigation = [
     { name: 'Product', href: '#' },
@@ -154,6 +156,9 @@ export default function Hero() {
                     />
                 </div>
             </div>
+            <Button variant="outline" size="lg" className="mt-10">
+                Get started
+            </Button>
         </div>
     )
 }

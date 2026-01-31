@@ -1,9 +1,9 @@
 
 import { useState } from 'react'
 import screenshotImg from './assets/Screenshot.png'
-import Card from './Components/Card'
-import Header from './Components/Header'
-import Hero from './Components/Hero'
+import Card from './components/Card'
+import Header from './components/Header'
+import Hero from './components/Hero'
 import './App.css'
 
 function App() {
