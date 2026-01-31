@@ -6,16 +6,37 @@ import './App.css'
 
 function App() {
 
+  const cardData = [
+    {
+      title: "Card 1 Title",
+      description: "Description for card 1. This uses the same image.",
+    },
+    {
+      title: "Card 2 Title",
+      description: "Description for card 2. This also uses the same image.",
+    },
+    {
+      title: "Card 3 Title",
+      description: "Description for card 3. Another card example.",
+    }
+  ];
+
   return (
     <>
       <div >
         <h1>First React Project</h1>
       </div>
-      <Card
-        title="Card Title"
-        description="The goal is to add a Card component that includes a description, improving the UI of the application."
-        image={screenshotImg}
-      />
+      <div className="flex flex-wrap justify-center gap-4">
+        {cardData.map((card, index) => (
+          <Card
+            key={index}
+            title={card.title}
+            description={card.description}
+            image={screenshotImg}
+          />
+        ))}
+
+      </div>
 
     </>
   )
