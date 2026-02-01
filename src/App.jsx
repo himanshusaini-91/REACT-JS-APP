@@ -4,6 +4,7 @@ import screenshotImg from './assets/Screenshot.png'
 import Card from './components/Card'
 import Header from './components/Header'
 import Hero from './components/Hero'
+import Counter from './components/Counter'
 import './App.css'
 
 function App() {
@@ -42,6 +43,8 @@ function App() {
 
 
       </div>
+      <Counter />
+
 
     </>
   )
