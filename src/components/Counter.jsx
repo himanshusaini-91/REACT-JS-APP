@@ -2,6 +2,7 @@ import "../App.css";
 import { useState } from "react";
 export default function Counter() {
     const [count, setCount] = useState(0)
+    const [counToSet, setCountToSet] = useState(0)
     // const decrementHandler = () => {
     //     setCount(count - 1)
     // }
@@ -25,9 +26,9 @@ export default function Counter() {
                         padding: "0.6 rem 1.2rem",
                         margin: "0 5px"
                     }}
-                    onChange={(event) => { setCount(Number(event.target.value)) }}
-                    value={count} />
-                <button style={{ margin: "0 5px" }}>Set Value to 8</button>
+                    onChange={(event) => { setCountToSet(Number(event.target.value)); }}
+                    value={counToSet} />
+                <button className="button" style={{ margin: "0 5px" }} onClick={() => setCount(counToSet)}>Set Value to {counToSet}</button>
             </div>
         </>
 
