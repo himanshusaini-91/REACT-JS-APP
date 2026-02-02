@@ -5,6 +5,7 @@ import Card from './components/Card'
 import Header from './components/Header'
 import Hero from './components/Hero'
 import Counter from './components/Counter'
+import QueueManagementSystem from './components/QueueManagementSystem'
 import './App.css'
 
 function App() {
@@ -26,7 +27,7 @@ function App() {
 
   return (
     <>
-      <Header />
+      {/* <Header />
       <Hero />
       <div >
         <h1>First React Project</h1>
@@ -43,7 +44,8 @@ function App() {
 
 
       </div>
-      <Counter />
+      <Counter /> */}
+      <QueueManagementSystem />
 
 
     </>
