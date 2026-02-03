@@ -1,13 +1,14 @@
 import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
-import { Menu, X, Home, LayoutList } from 'lucide-react'
+import { Menu, X, Home, LayoutList, BookOpen } from 'lucide-react'
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false)
 
     const navigation = [
         { name: 'Home', href: '/', icon: Home },
-        { name: 'Queue Management System', href: '/queue', icon: LayoutList },
+        { name: 'Queue System', href: '/queue', icon: LayoutList },
+        { name: 'Props & Context', href: '/props-context', icon: BookOpen },
     ]
 
     return (
