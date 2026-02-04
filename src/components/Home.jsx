@@ -1,5 +1,10 @@
 import Hero from './Hero'
 import screenshotImg from '../assets/Screenshot.png'
+import BasicProps from './BasicProps'
+import ChildrenProps from './ChildrenProps'
+import ComplexProps from './ComplexProps'
+import RefProps from './RefProps'
+import ThemeToggler from './ThemeToggler'
 
 export default function Home() {
     const cardData = [
@@ -50,6 +55,26 @@ export default function Home() {
                             </div>
                         </div>
                     ))}
+                </div>
+            </div>
+
+            {/* Educational Components Preview */}
+            <div className="bg-gray-900 border-t border-white/5 py-24">
+                <div className="container mx-auto px-4 text-center mb-12">
+                    <h2 className="text-3xl font-bold text-white mb-4">React Learning Hub</h2>
+                    <p className="text-gray-400">Master React concepts with these interactive examples</p>
+                </div>
+                <div className="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <BasicProps name="Student User" age={20} isStudent={true} />
+                    <ThemeToggler />
+                </div>
+                <div className="text-center mt-12">
+                    <a
+                        href="/props-context"
+                        className="inline-flex items-center gap-2 text-indigo-400 hover:text-indigo-300 font-semibold"
+                    >
+                        Explore all examples <span>&rarr;</span>
+                    </a>
                 </div>
             </div>
         </>
