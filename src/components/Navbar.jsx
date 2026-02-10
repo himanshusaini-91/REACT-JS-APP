@@ -1,6 +1,33 @@
 import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
-import { Menu, X, Home, LayoutList, BookOpen } from 'lucide-react'
+import { Menu, X, Home, LayoutList, BookOpen, Sun, Moon } from 'lucide-react'
+import { useTheme } from './ThemeToggler'
+
+function ThemeToggleBtn({ className = "" }) {
+    const { toggleTheme, isDark } = useTheme()
+
+    return (
+        <button
+            onClick={toggleTheme}
+            className={`
+                relative p-2 rounded-lg transition-all duration-300 overflow-hidden
+                ${isDark
+                    ? 'bg-gray-800 text-yellow-400 hover:bg-gray-700 ring-1 ring-white/10'
+                    : 'bg-indigo-50 text-indigo-600 hover:bg-indigo-100 ring-1 ring-indigo-500/20'
+                }
+                ${className}
+            `}
+            title={`Switch to ${isDark ? 'Light' : 'Dark'} Mode`}
+        >
+            <div className="relative z-10">
+                {isDark
+                    ? <Moon className="size-5" />
+                    : <Sun className="size-5" />
+                }
+            </div>
+        </button>
+    )
+}
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false)
@@ -23,7 +50,7 @@ export default function Navbar() {
                         </NavLink>
                     </div>
                     <div className="hidden md:block">
-                        <div className="ml-10 flex items-baseline space-x-4">
+                        <div className="ml-10 flex items-center space-x-4">
                             {navigation.map((item) => (
                                 <NavLink
                                     key={item.name}
@@ -39,6 +66,9 @@ export default function Navbar() {
                                     {item.name}
                                 </NavLink>
                             ))}
+                            <div className="pl-4 ml-4 border-l border-white/10">
+                                <ThemeToggleBtn />
+                            </div>
                         </div>
                     </div>
                     <div className="-mr-2 flex md:hidden">
@@ -76,6 +106,12 @@ export default function Navbar() {
                             {item.name}
                         </NavLink>
                     ))}
+                    <div className="px-3 py-2">
+                        <div className="flex items-center justify-between text-gray-300">
+                            <span className="text-base font-medium">Switch Theme</span>
+                            <ThemeToggleBtn />
+                        </div>
+                    </div>
                 </div>
             </div>
         </nav>
