@@ -36,6 +36,7 @@ export default function Navbar() {
         { name: 'Home', href: '/', icon: Home },
         { name: 'Queue System', href: '/queue', icon: LayoutList },
         { name: 'Props & Context', href: '/props-context', icon: BookOpen },
+        { name: 'Custom Hooks', href: '/hook-component', icon: BookOpen },
     ]
 
     return (
