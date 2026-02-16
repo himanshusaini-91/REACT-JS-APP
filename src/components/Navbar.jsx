@@ -1,31 +1,62 @@
 import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
-import { Menu, X, Home, LayoutList, BookOpen, Sun, Moon } from 'lucide-react'
+import { Menu, X, Home, LayoutList, BookOpen, Sun, Moon, Calculator } from 'lucide-react'
 import { useTheme } from './ThemeToggler'
+import { useStore } from '../store/store'
 
 function ThemeToggleBtn({ className = "" }) {
-    const { toggleTheme, isDark } = useTheme()
+    const { user, logout, theme, toggleTheme, login } = useStore()
+
+    const isDark = theme === 'moon'
+
+    const handleLogin = () => {
+        const name = Array(5).fill(null).map(() => String.fromCharCode(97 + Math.floor(Math.random() * 26))).join('')
+        login({ name })
+    }
 
     return (
-        <button
-            onClick={toggleTheme}
-            className={`
-                relative p-2 rounded-lg transition-all duration-300 overflow-hidden
-                ${isDark
-                    ? 'bg-gray-800 text-yellow-400 hover:bg-gray-700 ring-1 ring-white/10'
-                    : 'bg-indigo-50 text-indigo-600 hover:bg-indigo-100 ring-1 ring-indigo-500/20'
-                }
-                ${className}
-            `}
-            title={`Switch to ${isDark ? 'Light' : 'Dark'} Mode`}
-        >
-            <div className="relative z-10">
-                {isDark
-                    ? <Moon className="size-5" />
-                    : <Sun className="size-5" />
-                }
-            </div>
-        </button>
+        <div className="flex items-center gap-4">
+            {!user && (
+                <button
+                    onClick={handleLogin}
+                    className="text-xs font-medium bg-indigo-500/10 text-indigo-400 px-3 py-1.5 rounded-md hover:bg-indigo-500/20 transition-colors border border-indigo-500/20"
+                >
+                    Login
+                </button>
+            )}
+            {user && (
+                <div className="flex items-center gap-3 animate-in fade-in slide-in-from-right-4 duration-300">
+                    <span className="text-sm font-medium text-gray-300 hidden sm:block">
+                        Hi, <span className="text-indigo-400">{user.name}</span>
+                    </span>
+                    <button
+                        onClick={logout}
+                        className="text-xs font-medium bg-red-500/10 text-red-400 px-3 py-1.5 rounded-md hover:bg-red-500/20 transition-colors border border-red-500/20"
+                    >
+                        Logout
+                    </button>
+                </div>
+            )}
+            <button
+                onClick={toggleTheme}
+                className={`
+                    relative p-2 rounded-lg transition-all duration-300 overflow-hidden
+                    ${isDark
+                        ? 'bg-gray-800 text-yellow-400 hover:bg-gray-700 ring-1 ring-white/10'
+                        : 'bg-indigo-50 text-indigo-600 hover:bg-indigo-100 ring-1 ring-indigo-500/20'
+                    }
+                    ${className}
+                `}
+                title={`Switch to ${isDark ? 'Light' : 'Dark'} Mode`}
+            >
+                <div className="relative z-10">
+                    {isDark
+                        ? <Moon className="size-5" />
+                        : <Sun className="size-5" />
+                    }
+                </div>
+            </button>
+        </div>
     )
 }
 
@@ -37,6 +68,7 @@ export default function Navbar() {
         { name: 'Queue System', href: '/queue', icon: LayoutList },
         { name: 'Props & Context', href: '/props-context', icon: BookOpen },
         { name: 'Custom Hooks', href: '/hook-component', icon: BookOpen },
+        { name: 'Counter Store', href: '/counter-store', icon: Calculator },
     ]
 
     return (
